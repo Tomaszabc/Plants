@@ -1,0 +1,25 @@
+<div id="<%= dom_id plant %>">
+  <li
+    class="group relative rounded-3xl bg-slate-50 p-6 dark:bg-slate-800/80 dark:highlight-white/5 hover:bg-slate-100 dark:hover:bg-slate-700/50">
+    <div
+      class="aspect-[672/494] relative rounded-md transform overflow-hidden shadow-[0_2px_8px_rgba(15,23,42,0.08)] bg-slate-200 dark:bg-slate-700">
+      <%= image_tag 'plant_1.jpeg', alt: '', fetchpriority: 'high', width: 672, height: 494, decoding: 'async', data: { nimg: '1' }, class: 'absolute inset-0 w-full h-full object-cover', style: 'color:transparent' %>
+      
+    </div>
+    <div class="flex flex-row mt-6 justify-between">
+      <div class="flex flex-wrap items-center ">
+        <h2
+          class="text-sm leading-6 text-slate-900 dark:text-white font-semibold group-hover:text-sky-500 dark:group-hover:text-sky-400">
+          <a href="<%= plant_path(plant)%>"><span class="absolute inset-0 rounded-3xl"></span><%= plant.name %></a>
+        </h2>
+        <svg class="w-6 h-6 flex-none opacity-0 group-hover:opacity-100" viewBox="0 0 24 24" fill="none">
+          <path d="M9.75 15.25L15.25 9.75M15.25 9.75H10.85M15.25 9.75V14.15" stroke="#0EA5E9" stroke-width="1.5"
+            stroke-linecap="round" stroke-linejoin="round"></path>
+        </svg>
+        <p class="w-full flex-none text-[0.8125rem] leading-6 text-slate-500 dark:text-slate-400">podlano 2 dni temu</p>
+
+      </div>
+      <div class="hidden group-hover:flex z-5 text-3xl hover:shadow-md"><a href="#">💧</a></div>
+    </div>
+  </li>
+</div>
