@@ -4,7 +4,7 @@ class PlantsController < ApplicationController
 
   # GET /plants or /plants.json
   def index
-    @plants = Plant.all
+    @plants = current_user.plants
   end
 
   # GET /plants/1 or /plants/1.json
