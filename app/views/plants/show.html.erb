@@ -8,3 +8,12 @@
 
   <%= button_to "Destroy this plant", @plant, method: :delete %>
 </div>
+
+<div class="text-center m-10">
+  Watering log:
+</div>
+<div class="text-center m-10">
+  <% @plant.watering_logs.each do |watering_log| %>
+    <%= watering_log.created_at %>
+  <% end %>
+</div>

@@ -16,7 +16,7 @@
           <path d="M9.75 15.25L15.25 9.75M15.25 9.75H10.85M15.25 9.75V14.15" stroke="#0EA5E9" stroke-width="1.5"
             stroke-linecap="round" stroke-linejoin="round"></path>
         </svg>
-        <p class="w-full flex-none text-[0.8125rem] leading-6 text-slate-500 dark:text-slate-400">podlano 2 dni temu</p>
+        <p class="w-full flex-none text-[0.8125rem] leading-6 text-slate-500 dark:text-slate-400">podlano <%= plant.watering_logs.last.updated_at %></p>
 
       </div>
       <div class="hidden group-hover:flex z-5 text-3xl hover:shadow-md"><a href="#">💧</a></div>

@@ -35,7 +35,6 @@ ActiveRecord::Schema[7.0].define(version: 2024_07_24_092413) do
   end
 
   create_table "watering_logs", force: :cascade do |t|
-    t.datetime "watering_time"
     t.bigint "plant_id", null: false
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
