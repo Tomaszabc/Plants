@@ -1,0 +1,2 @@
+module WaterRemindersHelper
+end

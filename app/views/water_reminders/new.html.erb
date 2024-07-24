@@ -1,0 +1,11 @@
+<%= form_with(model: @water_reminder, local: true ) do |form|%>
+  <div>
+    <%= form.label :quantity, "ilość:" %>
+    <%= form.number_field :quantity %>
+  </div>
+  <div>
+    <%= form.label :unit, "Jednostka" %>
+    <%= form.select :unit, options_for_select([['Dni', 'days'], ['Tygodnie', 'weeks']]) %>
+    </div>
+  <%= form.submit "Utwórz przypomnienie" %>
+<% end %>
