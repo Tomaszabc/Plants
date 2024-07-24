@@ -1,5 +1,5 @@
 class PlantsController < ApplicationController
-  before_action :set_plant, only: %i[ show edit update destroy ]
+  before_action :set_plant, only: %i[ show edit update destroy water ]
   before_action :authenticate_user!
 
   # GET /plants or /plants.json
@@ -55,6 +55,11 @@ class PlantsController < ApplicationController
       format.html { redirect_to plants_url, notice: "Plant was successfully destroyed." }
       format.json { head :no_content }
     end
+  end
+
+  def water
+    @plant.water
+    redirect_back_or_to plant_path(@plant)
   end
 
   private

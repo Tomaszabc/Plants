@@ -9,11 +9,15 @@
   <%= button_to "Destroy this plant", @plant, method: :delete %>
 </div>
 
+<%= button_to water_plant_path(@plant), method: :post do  %>
+        <div class="flex z-5 text-3xl hover:shadow-md">💧</div>
+      <% end %>
+
 <div class="text-center m-10">
   Watering log:
 </div>
 <div class="text-center m-10">
-  <% @plant.watering_logs.each do |watering_log| %>
-    <%= watering_log.created_at %>
+  <% @plant.watering_logs.order(created_at: :asc).each_with_index do |watering_log, index| %>
+    <div><%= index + 1 %>.  <%= watering_log.created_at %></div>
   <% end %>
 </div>
