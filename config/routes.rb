@@ -3,6 +3,7 @@ Rails.application.routes.draw do
   devise_for :users
   resources :plants do
     resources :water_reminders, only: [:new, :create]
+    resources :watering_logs
     member do
       post 'water'
     end

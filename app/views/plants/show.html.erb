@@ -24,6 +24,18 @@
   <% end %>
 </div>
 
+Add watering log from date:
+<%= form_with(model: [@plant, @plant.watering_logs.build], local:true) do |form| %>
+  <div class="field">
+    <%= form.label :created_at, "Watering date and time" %>
+    <%= form.datetime_local_field :created_at, class: "form_control" %>
+  </div>
+
+  <div class="actions">
+    <%= form.submit "Add watering Log", class: "btn btn-primary" %>
+  </div>
+<% end %>
+
 
 <div class="text-center m-10">
   Watering Reminder Every
