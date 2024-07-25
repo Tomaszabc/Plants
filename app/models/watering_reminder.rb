@@ -1,5 +1,5 @@
 class WateringReminder < ApplicationRecord
-attr_accessor :quantity, :unit
+  belongs_to :plant
 
   def calculate_frequency
     hours = case unit
@@ -13,3 +13,5 @@ attr_accessor :quantity, :unit
     self.frequency = hours
   end
 end
+
+

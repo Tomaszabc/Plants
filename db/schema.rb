@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema[7.0].define(version: 2024_07_24_114812) do
+ActiveRecord::Schema[7.0].define(version: 2024_07_24_144224) do
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
 
@@ -46,7 +46,12 @@ ActiveRecord::Schema[7.0].define(version: 2024_07_24_114812) do
     t.integer "frequency"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
+    t.string "unit", null: false
+    t.integer "quantity", null: false
+    t.bigint "plant_id", null: false
+    t.index ["plant_id"], name: "index_watering_reminders_on_plant_id", unique: true
   end
 
   add_foreign_key "watering_logs", "plants"
+  add_foreign_key "watering_reminders", "plants"
 end

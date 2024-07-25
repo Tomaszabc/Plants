@@ -1,6 +1,5 @@
 Rails.application.routes.draw do
-  get 'water_reminders/new'
-  get 'water_reminders/create'
+
   devise_for :users
   resources :plants do
     resources :water_reminders, only: [:new, :create]

@@ -1,4 +1,4 @@
-<%= form_with(model: @water_reminder, local: true ) do |form|%>
+<%= form_with(model: @watering_reminder, url: plant_water_reminders_path(plant: @plant) , local: true ) do |form|%>
   <div>
     <%= form.label :quantity, "ilość:" %>
     <%= form.number_field :quantity %>

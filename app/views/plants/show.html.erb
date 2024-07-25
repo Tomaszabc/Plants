@@ -13,7 +13,7 @@
         <div class="flex z-5 text-3xl hover:shadow-md">💧</div>
       <% end %>
 
-<%= link_to water_reminders_new_path(@plant)%>
+<%= link_to 'Set watering reminder', new_plant_water_reminder_path(@plant) %>
 
 <div class="text-center m-10">
   Watering log:
@@ -22,4 +22,14 @@
   <% @plant.watering_logs.order(created_at: :asc).each_with_index do |watering_log, index| %>
     <div><%= index + 1 %>.  <%= watering_log.created_at %></div>
   <% end %>
+</div>
+
+
+<div class="text-center m-10">
+  Watering Reminder Every
+  <%= @plant.watering_reminder.quantity %>
+  <%= @plant.watering_reminder.unit %>
+  <br>
+  Next reminder:
+  <%= @plant.watered_at + @plant.watering_reminder.frequency.hours %>
 </div>
