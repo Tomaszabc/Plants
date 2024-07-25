@@ -2,9 +2,7 @@ class WateringLogsController < ApplicationController
 
   def create
     @plant = Plant.find(params[:plant_id])
-    @watering_log = @plant.watering_logs.build(watering_log_params)
-
-    if @watering_log.save
+    if @plant.water(watering_log_params[:created_at])
       redirect_to @plant, notice: "Utworzono watering log"
     else
       render :new
