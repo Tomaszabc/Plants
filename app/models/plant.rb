@@ -7,4 +7,14 @@ class Plant < ApplicationRecord
     update( watered_at: Time.current )
     WateringLog.create(plant: self)
   end
+
+  def next_watering
+    return nil unless watering_reminder
+    if watered_at
+      watered_at + watering_reminder.frequency.hours
+    else
+      watering_reminder.created_at + watering_reminder.frequency.hours
+    end
+  end
+
 end

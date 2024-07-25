@@ -27,9 +27,9 @@
 
 <div class="text-center m-10">
   Watering Reminder Every
-  <%= @plant.watering_reminder.quantity %>
-  <%= @plant.watering_reminder.unit %>
+  <%= @plant.watering_reminder&.quantity %>
+  <%= @plant.watering_reminder&.unit %>
   <br>
   Next reminder:
-  <%= @plant.watered_at + @plant.watering_reminder.frequency.hours %>
+  <%= @plant.next_watering || 'Brak informacji o podlaniu' %>
 </div>
