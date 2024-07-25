@@ -11,10 +11,14 @@ class Plant < ApplicationRecord
   def next_watering
     return nil unless watering_reminder
     if watered_at
-      watering_logs.order(:created_at).last.created_at + watering_reminder.frequency.hours
+      last_watering_log = watering_logs.order(:created_at).last
+      if last_watering_log
+        last_watering_log.created_at + watering_reminder.frequency.hours
+      else
+        nil
+      end
     else
       watering_reminder.created_at + watering_reminder.frequency.hours
     end
   end
-
 end

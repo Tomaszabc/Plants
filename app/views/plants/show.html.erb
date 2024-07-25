@@ -21,9 +21,13 @@
 </div>
 
 <div class="text-center m-10">
-  <h3>Watering log:</h3>
-  <% @plant.watering_logs.order(created_at: :asc).each_with_index do |watering_log, index| %>
-    <div class="watering-log-entry"><%= index + 1 %>. <%= watering_log.created_at %></div>
+  <h3 class="text-lg font-bold">Watering log:</h3>
+  <% if @plant.watering_logs.exists? %>
+    <% @plant.watering_logs.order(created_at: :asc).each_with_index do |watering_log, index| %>
+      <div class="mt-2"><%= index + 1 %>. <%= watering_log.created_at %></div>
+    <% end %>
+  <% else %>
+    <p>No watering logs available.</p>
   <% end %>
 </div>
 
@@ -50,6 +54,4 @@
   </p>
 </div>
 
-<style>
- 
-</style>
+
