@@ -5,6 +5,7 @@ class PlantsController < ApplicationController
   # GET /plants or /plants.json
   def index
     @plants = current_user.plants
+    @plants_needing_watering = @plants.select { |plant| plant.needs_watering?}
   end
 
   # GET /plants/1 or /plants/1.json

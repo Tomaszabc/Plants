@@ -21,4 +21,8 @@ class Plant < ApplicationRecord
       watering_reminder.created_at + watering_reminder.frequency.hours
     end
   end
+
+  def needs_watering?
+    next_watering&.present?
+  end
 end

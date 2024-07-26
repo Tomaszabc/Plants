@@ -6,17 +6,16 @@
 
 <div class="actions-bar">
   <%= link_to "Edit this plant", edit_plant_path(@plant), class: "btn btn-secondary" %> |
-  <%= link_to "Back to plants", plants_path, class: "btn btn-secondary" %> |
-  <%= button_to "Destroy this plant", @plant, method: :delete, data: { confirm: "Are you sure?" }, class: "btn btn-danger" %>
+  <%= link_to "Back to plants", plants_path, class: "btn btn-secondary" %>
 </div>
 
-<div class="water-plant">
-  <%= button_to water_plant_path(@plant), method: :post, class: "btn btn-water" do  %>
+<div class="water-plant my-4">
+  <%= button_to water_plant_path(@plant), method: :post, class: "btn btn-water" do %>
     <div class="flex z-5 text-3xl hover:shadow-md">💧</div>
   <% end %>
 </div>
 
-<div class="set-reminder">
+<div class="set-reminder my-4">
   <%= link_to 'Set watering reminder', new_plant_water_reminder_path(@plant), class: "btn btn-primary" %>
 </div>
 
@@ -31,12 +30,12 @@
   <% end %>
 </div>
 
-<div class="add-watering-log">
-  <h3>Add watering log from date:</h3>
+<div class="add-watering-log my-4">
+  <h3 class="text-lg font-bold">Add watering log from date:</h3>
   <%= form_with(model: [@plant, WateringLog.new], local: true, class: "form-inline") do |form| %>
-    <div class="field">
-      <%= form.label :created_at, "Watering date and time" %>
-      <%= form.datetime_local_field :created_at, class: "form-control" %>
+    <div class="field mb-4">
+      <%= form.label :created_at, "Watering date and time", class: "block text-sm font-medium text-gray-700" %>
+      <%= form.datetime_local_field :created_at, class: "form-control mt-1 block w-full" %>
     </div>
     <div class="actions">
       <%= form.submit "Add watering Log", class: "btn btn-primary" %>
@@ -45,7 +44,7 @@
 </div>
 
 <div class="text-center m-10">
-  <h3>Watering Reminder</h3>
+  <h3 class="text-lg font-bold">Watering Reminder</h3>
   <p>
     Every <%= @plant.watering_reminder&.quantity %> <%= @plant.watering_reminder&.unit %>
   </p>
@@ -54,4 +53,6 @@
   </p>
 </div>
 
-
+<div class="text-center my-4">
+  <%= button_to "Destroy this plant", @plant, method: :delete, data: { confirm: "Are you sure you want to destroy this plant?" }, class: "btn btn-danger" %>
+</div>
