@@ -71,3 +71,5 @@ end
 
 
 gem "devise", "~> 4.9"
+gem "image_processing", ">= 1.2"
+gem 'rmagick'

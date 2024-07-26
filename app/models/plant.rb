@@ -2,7 +2,8 @@ class Plant < ApplicationRecord
   belongs_to :user
   has_many :watering_logs, dependent: :destroy
   has_one :watering_reminder, dependent: :destroy
-
+  has_one_attached :plant_image, dependent: :destroy
+  
   def water(time = Time.current)
     update( watered_at: time )
     WateringLog.create(plant: self, created_at: time)
