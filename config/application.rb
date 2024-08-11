@@ -1,5 +1,5 @@
 require_relative "boot"
-require 'rmagick'
+require "rmagick"
 
 require "rails"
 # Pick the frameworks you want:

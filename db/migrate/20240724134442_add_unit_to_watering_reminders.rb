@@ -4,4 +4,3 @@ class AddUnitToWateringReminders < ActiveRecord::Migration[7.0]
     add_column :watering_reminders, :quantity, :integer, null: false
   end
 end
-

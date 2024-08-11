@@ -1,11 +1,11 @@
 class PlantsController < ApplicationController
-  before_action :set_plant, only: %i[ show edit update destroy water ]
+  before_action :set_plant, only: %i[show edit update destroy water]
   before_action :authenticate_user!
 
   # GET /plants or /plants.json
   def index
     @plants = current_user.plants
-    @plants_needing_watering = @plants.select { |plant| plant.needs_watering?}
+    @plants_needing_watering = @plants.select { |plant| plant.needs_watering? }
   end
 
   # GET /plants/1 or /plants/1.json
@@ -64,13 +64,14 @@ class PlantsController < ApplicationController
   end
 
   private
-    # Use callbacks to share common setup or constraints between actions.
-    def set_plant
-      @plant = Plant.find(params[:id])
-    end
 
-    # Only allow a list of trusted parameters through.
-    def plant_params
-      params.require(:plant).permit(:name, :plant_image)
-    end
+  # Use callbacks to share common setup or constraints between actions.
+  def set_plant
+    @plant = Plant.find(params[:id])
+  end
+
+  # Only allow a list of trusted parameters through.
+  def plant_params
+    params.require(:plant).permit(:name, :plant_image)
+  end
 end
