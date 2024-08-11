@@ -10,8 +10,7 @@
     <%= javascript_include_tag "application", "data-turbo-track": "reload", type: "module" %>
   </head>
 
-  <p class="notice"><%= notice %></p>
-  <p class="alert"><%= alert %></p>
+  <%= render 'layouts/notice' %>
 
   <%= render 'plants/navbar' %>
   <body>
