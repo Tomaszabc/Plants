@@ -19,14 +19,14 @@
       </svg>
       <p class="w-full flex-none text-[0.8125rem] leading-6 text-slate-500 dark:text-slate-400">
         <% if plant.watering_logs.exists? %>
-          Podlano <%= plant.watering_logs.last.updated_at.strftime("%d-%m-%Y %H:%M") %>
+          Watered <%= time_ago_in_words(plant.watering_logs.last.updated_at) %> ago
         <% else %>
-          Nie podlano nigdy
+          Never watered before
         <% end %>
       </p>
       <% if plant.next_watering  %>
         <p class="w-full flex-none text-[0.8125rem] leading-6 text-slate-500 dark:text-slate-400">
-          Następne podlanie: <%= plant.next_watering.strftime("%d-%m-%Y %H:%M") %>
+          Next watering: <%= plant.next_watering.strftime("%d-%m-%Y %H:%M") %>
         </p>
       <% end %>
     </div>
