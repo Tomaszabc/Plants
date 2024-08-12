@@ -13,7 +13,7 @@
           <div class="pl-4 flex flex-col justify-between">
             <div>
               <h1 class="text-3xl font-bold text-gray-800"><%= @plant.name %></h1>
-              <p class="text-gray-600">Next watering: <%= @plant.next_watering.strftime("%d-%m-%Y %H:%M") || 'No watering information' %></p>
+              <p class="text-gray-600">Next watering: <%= @plant.next_watering&.strftime("%d-%m-%Y %H:%M") || 'No watering information' %></p>
               <p class="text-gray-600">Reminder: Every <%= @plant.watering_reminder&.quantity %> <%= @plant.watering_reminder&.unit %></p>
             </div>
             <div class="flex items-center space-x-4 mb-4">
@@ -31,11 +31,14 @@
       </div>
 
         <div>
-          <h2 class="text-xl font-semibold mb-4">Watering Log</h2>
+          <h2 class="text-xl font-semibold mb-4 ">Watering Log</h2>
           <% if @plant.watering_logs.exists? %>
-            <ul class="list-disc list-inside">
+            <ul class="list-disc list-inside ">
               <% @plant.watering_logs.order(created_at: :desc).each do |log| %>
-                <li class="text-gray-600"><%= log.created_at.strftime("%B %d, %Y at %I:%M %p") %></li>
+                <li class="text-gray-600 flex inline">
+                <%= log.created_at&.strftime("%B %d, %Y at %I:%M %p") %>
+                <%= button_to "&#10060".html_safe, plant_watering_log_path(@plant, log), method: :delete, data: { confirm: "Are you sure to delete log?" }, class: "ml-4" %>
+                </li>
               <% end %>
             </ul>
           <% else %>
