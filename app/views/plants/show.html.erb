@@ -23,29 +23,30 @@
           </div>
         </div>
         <div>
-        <div class="flex space-x-2">
-          <%= link_to "Edit", edit_plant_path(@plant), class: "btn btn-secondary" %>
-          <%= button_to "Delete", @plant, method: :delete, data: { confirm: "Are you sure you want to delete this plant?" }, class: "btn btn-danger" %>
-        </div>
+          <div class="flex space-x-2">
+            <%= link_to "Edit", edit_plant_path(@plant), class: "btn btn-secondary" %>
+            <%= button_to "Delete", @plant, method: :delete, data: { confirm: "Are you sure you want to delete this plant?" }, class: "btn btn-danger" %>
+          </div>
         </div>
       </div>
-
-        <div>
-          <h2 class="text-xl font-semibold mb-4 ">Watering Log</h2>
-          <% if @plant.watering_logs.exists? %>
-            <ul class="list-disc list-inside ">
-              <% @plant.watering_logs.order(created_at: :desc).each do |log| %>
-                <li class="text-gray-600 flex inline">
+      <div>
+        <h2 class="text-xl font-semibold mb-4 ">Watering Log</h2>
+        <% if @watering_logs.any? %>
+          <ul class="list-disc list-inside ">
+            <% @watering_logs.each do |log| %>
+              <li class="m-4 text-gray-600 flex inline">
                 <%= log.created_at&.strftime("%B %d, %Y at %I:%M %p") %>
                 <%= button_to "&#10060".html_safe, plant_watering_log_path(@plant, log), method: :delete, data: { confirm: "Are you sure to delete log?" }, class: "ml-4" %>
-                </li>
-              <% end %>
-            </ul>
-          <% else %>
-            <p class="text-gray-600">No watering logs available.</p>
-          <% end %>
-        </div>
-
+              </li>
+            <% end %>
+          </ul>
+          <nav class="mt-4">
+            <%== pagy_nav(@pagy) %>
+          </nav>
+        <% else %>
+          <p class="text-gray-600">No watering logs available.</p>
+        <% end %>
+      </div>
       <div class="mt-8">
         <h2 class="text-xl font-semibold mb-4">Add Watering Log</h2>
         <%= form_with(model: [@plant, WateringLog.new], local: true, class: "space-y-4") do |form| %>

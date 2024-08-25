@@ -10,6 +10,7 @@ class PlantsController < ApplicationController
 
   # GET /plants/1 or /plants/1.json
   def show
+    @pagy, @watering_logs = pagy(@plant.watering_logs.order(created_at: :desc), limit: 5)
   end
 
   # GET /plants/new
