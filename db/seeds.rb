@@ -11,3 +11,5 @@ Plant.create(name: "Tulip")
 
 WateringDate.create(watering_time: DateTime.now, plant_id: Plant.first.id)
 WateringDate.create(watering_time: DateTime.now - 1.day, plant_id: Plant.last.id)
+
+User.create(email: "admin3@example.com", password: "password", password_confirmation: "password")
