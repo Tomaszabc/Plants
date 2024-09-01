@@ -24,7 +24,8 @@ class Plant < ApplicationRecord
   end
 
   def needs_watering?
-    next_watering&.present?
+    return false if next_watering.nil?
+    next_watering.to_date <= Date.today 
   end
 
   def self.to_csv(plants)
