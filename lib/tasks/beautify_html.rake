@@ -1,4 +1,4 @@
-require 'htmlbeautifier'
+require "htmlbeautifier"
 
 namespace :html do
   desc "Beautify all HTML files in the project"
@@ -6,7 +6,7 @@ namespace :html do
     Dir.glob("app/views/**/*.html.erb").each do |file|
       original = File.read(file)
       beautified = HtmlBeautifier.beautify(original)
-      File.open(file, "w") { |f| f.write(beautified) }
+      File.write(file, beautified)
       puts "Beautified: #{file}"
     end
   end

@@ -6,6 +6,11 @@ class PlantsController < ApplicationController
   def index
     @plants = current_user.plants
     @plants_needing_watering = @plants.select { |plant| plant.needs_watering? }
+
+    respond_to do |format|
+      format.html
+      format.csv { send_data Plant.to_csv(@plants), filename: "plants-#{DateTime.now.strftime("%d%m%Y%H%M")}.csv" }
+    end
   end
 
   # GET /plants/1 or /plants/1.json

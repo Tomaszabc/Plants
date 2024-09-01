@@ -7,6 +7,9 @@
   <div class="flex justify-center m-10">
     <%= link_to "New plant", new_plant_path, class: "bg-blue-500 hover:bg-blue-700 text-white font-bold py-2 px-4 rounded" %>
   </div>
+  <div class="flex justify-center m-10">
+    <%= link_to "Export CSV", plants_path(format: 'csv') %>
+  </div>
 <% else%>
   <div class="flex justify-center">
     <%= image_tag( "empty_pots.png", size: "400") %>
