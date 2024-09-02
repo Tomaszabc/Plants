@@ -15,6 +15,12 @@
               <h1 class="text-3xl font-bold text-gray-800"><%= @plant.name %></h1>
               <p class="text-gray-600">Next watering: <%= @plant.next_watering&.strftime("%d-%m-%Y %H:%M") || 'No watering information' %></p>
               <p class="text-gray-600">Reminder: Every <%= @plant.watering_reminder&.quantity %> <%= @plant.watering_reminder&.unit %></p>
+              <p class="text-gray-600">Note: <%= @plant.note %></p>
+              <p class="text-gray-600">Light requirements: <%= @plant.light_requirements %></p>
+              <p class="text-gray-600">Water needs: <%= @plant.water_needs %></p>
+              <p class="text-gray-600">Fertilization needs: <%= @plant.fertilization_needs %></p>
+              <p class="text-gray-600">Toxicity: <%= @plant.toxicity %></p>
+              <p class="text-gray-600">Date acquired: <%= @plant.date_acquired %></p>
             </div>
             <div class="flex items-center space-x-4 mb-4">
               <%= button_to '💧 Water Now', water_plant_path(@plant), method: :post, class: "btn btn-primary" %>
