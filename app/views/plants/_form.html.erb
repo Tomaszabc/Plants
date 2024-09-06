@@ -46,10 +46,10 @@
 
   <div class="flex flex-col ">
     <%= form.label :toxicity, "Toxicity", class: "block text-gray-700 text-sm font-bold mb-2" %>
-    <% Plant.toxicity.keys.each do |key| %>
+    <% Plant.toxicities.values.each do |value| %>
       <div class="flex items-center mb-2">
-        <%= form.radio_button :toxicity, key, class: "mr-2" %>
-        <%= form.label :toxicity, key.humanize, value: key, class: "text-gray-700 text-sm" %>
+        <%= form.radio_button :toxicity, value, class: "mr-2" %>
+        <%= form.label :toxicity, value.humanize, value: value, class: "text-gray-700 text-sm" %>
       </div>
     <% end %>
   </div>

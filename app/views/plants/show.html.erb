@@ -3,11 +3,11 @@
     <div class="p-6">
       <div class="flex justify-between mb-6">
         <div class="flex mb-6">
-          <div class="border-4 border-gray-300 rounded-lg shadow-md">
+          <div class="border-4 border-gray-300 rounded-lg shadow-md w-48">
             <% if @plant.plant_image.attached? %>
-              <%= image_tag @plant.plant_image, class: "w-48 h-48 object-cover rounded-lg", alt: @plant.name %>
+              <%= image_tag @plant.plant_image, class: "object-cover h-full w-full rounded-lg", alt: @plant.name %>
             <% else %>
-              <%= image_tag 'plant_1.jpeg', class: "w-48 h-48 object-cover rounded-lg", alt: "Default plant image" %>
+              <%= image_tag 'plant_1.jpeg', class: "object-cover h-full w-full rounded-lg", alt: "Default plant image" %>
             <% end %>
           </div>
           <div class="pl-4 flex flex-col justify-between">
@@ -16,11 +16,11 @@
               <p class="text-gray-600">Next watering: <%= @plant.next_watering&.strftime("%d-%m-%Y %H:%M") || 'No watering information' %></p>
               <p class="text-gray-600">Reminder: Every <%= @plant.watering_reminder&.quantity %> <%= @plant.watering_reminder&.unit %></p>
               <p class="text-gray-600">Note: <%= @plant.note %></p>
-              <p class="text-gray-600">Light requirements: <%= @plant.light_requirements %></p>
-              <p class="text-gray-600">Water needs: <%= @plant.water_needs %></p>
+              <p class="text-gray-600">Light requirements: <%= @plant.light_requirements.humanize %></p>
+              <p class="text-gray-600">Water needs: <%= @plant.water_needs.humanize %></p>
               <p class="text-gray-600">Fertilization needs: <%= @plant.fertilization_needs %></p>
-              <p class="text-gray-600">Toxicity: <%= @plant.toxicity %></p>
-              <p class="text-gray-600">Date acquired: <%= @plant.date_acquired %></p>
+              <p class="text-gray-600">Toxicity: <%= @plant.toxicity.humanize %></p>
+              <p class="text-gray-600">Date acquired: <%= @plant.date_acquired.strftime("%d %B %Y") %></p>
             </div>
             <div class="flex items-center space-x-4 mb-4">
               <%= button_to '💧 Water Now', water_plant_path(@plant), method: :post, class: "btn btn-primary" %>
