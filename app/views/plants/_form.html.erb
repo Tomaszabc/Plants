@@ -13,6 +13,54 @@
     <%= form.label :name, class: "block text-gray-700 text-sm font-bold mb-2" %>
     <%= form.text_area :name, class: "shadow appearance-none border rounded w-full py-2 px-3 text-gray-700 leading-tight focus:outline-none focus:shadow-outline" %>
   </div>
+
+  <div class="flex flex-col ">
+    <%= form.label :note, class: "block text-gray-700 text-sm font-bold mb-2" %>
+    <%= form.text_area :note, class: "shadow appearance-none border rounded w-full py-2 px-3 text-gray-700 leading-tight focus:outline-none focus:shadow-outline" %>
+  </div>
+
+  <div class="flex flex-col ">
+    <%= form.label :light_requirements, "Light Requirements", class: "block text-gray-700 text-sm font-bold mb-2" %>
+    <% Plant.light_requirements.keys.each do |key| %>
+      <div class="flex items-center mb-2">
+        <%= form.radio_button :light_requirements, key, class: "mr-2" %>
+        <%= form.label :light_requirements, key.humanize, value: key, class: "text-gray-700 text-sm" %>
+      </div>
+    <% end %>
+  </div>
+
+  <div class="flex flex-col ">
+    <%= form.label :water_needs, "Water needs:", class: "block text-gray-700 text-sm font-bold mb-2" %>
+    <% Plant.water_needs.keys.each do |key| %>
+      <div class="flex items-center mb-2">
+        <%= form.radio_button :water_needs, key, class: "mr-2" %>
+        <%= form.label :water_needs, key.humanize, value: key, class: "text-gray-700 text-sm" %>
+      </div>
+    <% end %>
+  </div>
+
+  <div class="flex flex-col ">
+    <%= form.label :fertilization_needs, class: "block text-gray-700 text-sm font-bold mb-2" %>
+    <%= form.text_area :fertilization_needs, class: "shadow appearance-none border rounded w-full py-2 px-3 text-gray-700 leading-tight focus:outline-none focus:shadow-outline" %>
+  </div>
+
+  <div class="flex flex-col ">
+    <%= form.label :toxicity, "Toxicity", class: "block text-gray-700 text-sm font-bold mb-2" %>
+    <% Plant.toxicities.values.each do |value| %>
+      <div class="flex items-center mb-2">
+        <%= form.radio_button :toxicity, value, class: "mr-2" %>
+        <%= form.label :toxicity, value.humanize, value: value, class: "text-gray-700 text-sm" %>
+      </div>
+    <% end %>
+  </div>
+
+
+<div class="flex flex-col ">
+  <%= form.label :date_acquired, "Date Acquired", class: "block text-gray-700 text-sm font-bold mb-2" %>
+  <%= form.date_field :date_acquired, class: "shadow appearance-none border rounded w-full py-2 px-3 text-gray-700 leading-tight focus:outline-none focus:shadow-outline" %>
+</div>
+
+
   <div class="flex flex-col">
     <%= form.label :plant_image, class: "block text-gray-700 text-sm font-bold mb-2" %>
     <%= form.file_field :plant_image, class: "shadow appearance-none border rounded w-full py-2 px-3 text-gray-700 leading-tight focus:outline-none focus:shadow-outline" %>

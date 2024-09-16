@@ -6,6 +6,11 @@ class Plant < ApplicationRecord
   has_one :watering_reminder, dependent: :destroy
   has_one_attached :plant_image, dependent: :destroy
 
+  enum light_requirements: { low: "low", medium: "medium", high: "high" }, _suffix: true
+  enum water_needs: { low: "low", medium: "medium", high: "high" }, _suffix: true
+  enum toxicity: { non_toxic: "non toxic", to_humans: "to humans", to_pets: "to pets" }, _suffix: true
+
+
   def water(time = Time.current)
     update(watered_at: time)
     WateringLog.create(plant: self, created_at: time)
