@@ -1,9 +1,9 @@
 <li class="group relative rounded-3xl bg-slate-50 p-6 dark:bg-slate-800/80 dark:highlight-white/5 hover:bg-slate-100 dark:hover:bg-slate-700/50">
   <div class="aspect-[672/494] relative rounded-md transform overflow-hidden shadow-[0_2px_8px_rgba(15,23,42,0.08)] bg-slate-200 dark:bg-slate-700">
     <% if plant.plant_image.attached? %>
-      <%= image_tag plant.plant_image, alt: '', fetchpriority: 'high', width: 672, height: 494, decoding: 'async', data: { nimg: '1' }, class: 'absolute inset-0 w-full h-full object-cover', style: 'color:transparent' %>
+      <%= image_tag plant.plant_image, alt: '', fetchpriority: 'high', width: 672, height: 494, decoding: 'async', data: { nimg: '1' }, class: 'z-5 absolute inset-0 w-full h-full object-cover', style: 'color:transparent' %>
     <% else %>
-      <%= image_tag 'plant_1.jpeg', alt: '', fetchpriority: 'high', width: 672, height: 494, decoding: 'async', data: { nimg: '1' }, class: 'absolute inset-0 w-full h-full object-cover', style: 'color:transparent' %>
+      <%= image_tag 'plant_1.jpeg', alt: '', fetchpriority: 'high', width: 672, height: 494, decoding: 'async', data: { nimg: '1' }, class: 'z-5 absolute inset-0 w-full h-full object-cover', style: 'color:transparent' %>
     <% end %>
   </div>
   <div class="flex flex-row mt-6 justify-between">
@@ -30,6 +30,6 @@
         </p>
       <% end %>
     </div>
-    <%= button_to '💧', water_plant_path(plant), {method: :post, form_class: "z-5 text-xl hover:scale-125 w-8 p-1 h-8 round z-50"} %>
+    <%= button_to '💧', water_plant_path(plant), {method: :post, form_class: "z-10 text-xl hover:scale-125 w-8 p-1 h-8 round "} %>
   </div>
 </li>
